@@ -2,11 +2,14 @@ package main
 
 import (
 	"github.com/go-playground/validator/v10"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/julienschmidt/httprouter"
 	"learn-golang-restapi-pzn/app"
 	"learn-golang-restapi-pzn/controller"
+	"learn-golang-restapi-pzn/helper"
 	"learn-golang-restapi-pzn/repository"
 	"learn-golang-restapi-pzn/service"
+	"net/http"
 )
 
 func main() {
@@ -26,4 +29,11 @@ func main() {
 	router.PUT("/api/categories/:categoryId", categoryController.Update)
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
 
+	server := http.Server{
+		Addr:    "localhost:3000",
+		Handler: router,
+	}
+
+	err := server.ListenAndServe()
+	helper.PanicIfError(err)
 }
