@@ -8,6 +8,7 @@ import (
 	"learn-golang-restapi-pzn/controller"
 	"learn-golang-restapi-pzn/exception"
 	"learn-golang-restapi-pzn/helper"
+	"learn-golang-restapi-pzn/middleware"
 	"learn-golang-restapi-pzn/repository"
 	"learn-golang-restapi-pzn/service"
 	"net/http"
@@ -34,7 +35,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    "localhost:3000",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()
