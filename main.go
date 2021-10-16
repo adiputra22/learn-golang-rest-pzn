@@ -6,6 +6,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"learn-golang-restapi-pzn/app"
 	"learn-golang-restapi-pzn/controller"
+	"learn-golang-restapi-pzn/exception"
 	"learn-golang-restapi-pzn/helper"
 	"learn-golang-restapi-pzn/repository"
 	"learn-golang-restapi-pzn/service"
@@ -28,6 +29,8 @@ func main() {
 	router.POST("/api/categories", categoryController.Create)
 	router.PUT("/api/categories/:categoryId", categoryController.Update)
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
+
+	router.PanicHandler = exception.ErrorHandler
 
 	server := http.Server{
 		Addr:    "localhost:3000",
