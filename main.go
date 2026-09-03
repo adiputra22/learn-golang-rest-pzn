@@ -1,15 +1,16 @@
 package main
 
 import (
+	"adiputra22/learn-golang-restapi-pzn/app"
+	"adiputra22/learn-golang-restapi-pzn/controller"
+	"adiputra22/learn-golang-restapi-pzn/helper"
+	"adiputra22/learn-golang-restapi-pzn/middleware"
+	"adiputra22/learn-golang-restapi-pzn/repository"
+	"adiputra22/learn-golang-restapi-pzn/service"
+	"net/http"
+
 	"github.com/go-playground/validator/v10"
 	_ "github.com/go-sql-driver/mysql"
-	"learn-golang-restapi-pzn/app"
-	"learn-golang-restapi-pzn/controller"
-	"learn-golang-restapi-pzn/helper"
-	"learn-golang-restapi-pzn/middleware"
-	"learn-golang-restapi-pzn/repository"
-	"learn-golang-restapi-pzn/service"
-	"net/http"
 )
 
 func main() {

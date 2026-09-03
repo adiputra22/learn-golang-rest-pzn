@@ -1,11 +1,11 @@
 package repository
 
 import (
+	"adiputra22/learn-golang-restapi-pzn/helper"
+	"adiputra22/learn-golang-restapi-pzn/model/domain"
 	"context"
 	"database/sql"
 	"errors"
-	"learn-golang-restapi-pzn/helper"
-	"learn-golang-restapi-pzn/model/domain"
 )
 
 type CategoryRepositoryImpl struct {

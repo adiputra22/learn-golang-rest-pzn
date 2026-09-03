@@ -1,9 +1,9 @@
 package repository
 
 import (
+	"adiputra22/learn-golang-restapi-pzn/model/domain"
 	"context"
 	"database/sql"
-	"learn-golang-restapi-pzn/model/domain"
 )
 
 type CategoryRepository interface {
