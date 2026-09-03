@@ -2,15 +2,19 @@ package test
 
 import (
 	"adiputra22/learn-golang-restapi-pzn/simple"
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func TestSimpleService(t *testing.T) {
-	simpleService, err := simple.InitializeService()
-	if err != nil {
-		fmt.Println(simpleService.SimpleRepository)
-	} else {
-		fmt.Println(simpleService.SimpleRepository)
-	}
+func TestSimpleServiceError(t *testing.T) {
+	simpleService, err := simple.InitializeService(true)
+	assert.Nil(t, simpleService)
+	assert.NotNil(t, err)
+}
+
+func TestSimpleServiceSuccess(t *testing.T) {
+	simpleService, err := simple.InitializeService(false)
+	assert.NotNil(t, simpleService)
+	assert.Nil(t, err)
 }
