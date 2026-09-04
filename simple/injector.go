@@ -31,3 +31,8 @@ func InitializeFooBarService() *FooBarService {
 	wire.Build(fooSet, barSet, NewFooBarService)
 	return nil
 }
+
+func InitializedConnection(name string) (*Connection, func()) {
+	wire.Build(NewConnection, NewFile)
+	return nil, nil
+}

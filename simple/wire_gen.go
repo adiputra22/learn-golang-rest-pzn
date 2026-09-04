@@ -37,6 +37,15 @@ func InitializeFooBarService() *FooBarService {
 	return fooBarService
 }
 
+func InitializedConnection(name string) (*Connection, func()) {
+	file, cleanup := NewFile(name)
+	connection, cleanup2 := NewConnection(file)
+	return connection, func() {
+		cleanup2()
+		cleanup()
+	}
+}
+
 // injector.go:
 
 var fooSet = wire.NewSet(NewFooRepository, NewFooService)
