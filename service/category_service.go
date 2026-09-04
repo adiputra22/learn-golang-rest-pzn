@@ -1,8 +1,8 @@
 package service
 
 import (
+	"adiputra22/learn-golang-restapi-pzn/model/web"
 	"context"
-	"learn-golang-restapi-pzn/model/web"
 )
 
 type CategoryService interface {

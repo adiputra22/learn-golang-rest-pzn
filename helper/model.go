@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"learn-golang-restapi-pzn/model/domain"
-	"learn-golang-restapi-pzn/model/web"
+	"adiputra22/learn-golang-restapi-pzn/model/domain"
+	"adiputra22/learn-golang-restapi-pzn/model/web"
 )
 
 func ToCategoryResponse(category domain.Category) web.CategoryResponse {

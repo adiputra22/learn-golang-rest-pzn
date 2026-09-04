@@ -1,14 +1,15 @@
 package service
 
 import (
+	"adiputra22/learn-golang-restapi-pzn/exception"
+	"adiputra22/learn-golang-restapi-pzn/helper"
+	"adiputra22/learn-golang-restapi-pzn/model/domain"
+	"adiputra22/learn-golang-restapi-pzn/model/web"
+	"adiputra22/learn-golang-restapi-pzn/repository"
 	"context"
 	"database/sql"
+
 	"github.com/go-playground/validator/v10"
-	"learn-golang-restapi-pzn/exception"
-	"learn-golang-restapi-pzn/helper"
-	"learn-golang-restapi-pzn/model/domain"
-	"learn-golang-restapi-pzn/model/web"
-	"learn-golang-restapi-pzn/repository"
 )
 
 type CategoryServiceImpl struct {
@@ -17,7 +18,11 @@ type CategoryServiceImpl struct {
 	Validate           *validator.Validate
 }
 
-func NewCategoryService(categoryRepository repository.CategoryRepository, DB *sql.DB, validate *validator.Validate) CategoryService {
+func NewCategoryService(
+	categoryRepository repository.CategoryRepository,
+	DB *sql.DB,
+	validate *validator.Validate,
+) *CategoryServiceImpl {
 	return &CategoryServiceImpl{
 		CategoryRepository: categoryRepository,
 		DB:                 DB,

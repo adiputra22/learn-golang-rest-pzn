@@ -1,10 +1,11 @@
 package exception
 
 import (
-	"github.com/go-playground/validator/v10"
-	"learn-golang-restapi-pzn/helper"
-	"learn-golang-restapi-pzn/model/web"
+	"adiputra22/learn-golang-restapi-pzn/helper"
+	"adiputra22/learn-golang-restapi-pzn/model/web"
 	"net/http"
+
+	"github.com/go-playground/validator/v10"
 )
 
 func ErrorHandler(writer http.ResponseWriter, request *http.Request, err interface{}) {

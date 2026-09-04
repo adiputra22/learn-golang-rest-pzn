@@ -1,19 +1,20 @@
 package controller
 
 import (
-	"github.com/julienschmidt/httprouter"
-	"learn-golang-restapi-pzn/helper"
-	"learn-golang-restapi-pzn/model/web"
-	"learn-golang-restapi-pzn/service"
+	"adiputra22/learn-golang-restapi-pzn/helper"
+	"adiputra22/learn-golang-restapi-pzn/model/web"
+	"adiputra22/learn-golang-restapi-pzn/service"
 	"net/http"
 	"strconv"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 type CategoryControllerImpl struct {
 	CategoryService service.CategoryService
 }
 
-func NewCategoryController(categoryService service.CategoryService) CategoryController {
+func NewCategoryController(categoryService service.CategoryService) *CategoryControllerImpl {
 	return &CategoryControllerImpl{
 		CategoryService: categoryService,
 	}

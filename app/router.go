@@ -1,9 +1,10 @@
 package app
 
 import (
+	"adiputra22/learn-golang-restapi-pzn/controller"
+	"adiputra22/learn-golang-restapi-pzn/exception"
+
 	"github.com/julienschmidt/httprouter"
-	"learn-golang-restapi-pzn/controller"
-	"learn-golang-restapi-pzn/exception"
 )
 
 func NewRouter(categoryController controller.CategoryController) *httprouter.Router {

@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"learn-golang-restapi-pzn/helper"
-	"learn-golang-restapi-pzn/model/web"
+	"adiputra22/learn-golang-restapi-pzn/helper"
+	"adiputra22/learn-golang-restapi-pzn/model/web"
 	"net/http"
 )
 

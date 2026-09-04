@@ -1,26 +1,27 @@
 package test
 
 import (
+	"adiputra22/learn-golang-restapi-pzn/app"
+	"adiputra22/learn-golang-restapi-pzn/controller"
+	"adiputra22/learn-golang-restapi-pzn/helper"
+	"adiputra22/learn-golang-restapi-pzn/middleware"
+	"adiputra22/learn-golang-restapi-pzn/model/domain"
+	"adiputra22/learn-golang-restapi-pzn/repository"
+	"adiputra22/learn-golang-restapi-pzn/service"
 	"context"
 	"database/sql"
 	"encoding/json"
-	"github.com/go-playground/validator/v10"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/stretchr/testify/assert"
 	"io"
-	"learn-golang-restapi-pzn/app"
-	"learn-golang-restapi-pzn/controller"
-	"learn-golang-restapi-pzn/helper"
-	"learn-golang-restapi-pzn/middleware"
-	"learn-golang-restapi-pzn/model/domain"
-	"learn-golang-restapi-pzn/repository"
-	"learn-golang-restapi-pzn/service"
 	"net/http"
 	"net/http/httptest"
 	"strconv"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/go-playground/validator/v10"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/stretchr/testify/assert"
 )
 
 func setupTestDB() *sql.DB {
@@ -38,7 +39,7 @@ func setupTestDB() *sql.DB {
 func setupRouter(db *sql.DB) http.Handler {
 	validate := validator.New()
 
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	categoryService := service.NewCategoryService(categoryRepository, db, validate)
 	categoryController := controller.NewCategoryController(categoryService)
 
@@ -119,7 +120,7 @@ func TestUpdateCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -158,7 +159,7 @@ func TestUpdateCategoryFailed(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -195,7 +196,7 @@ func TestGetCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -259,7 +260,7 @@ func TestDeleteCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -321,7 +322,7 @@ func TestGetListCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category1 := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
