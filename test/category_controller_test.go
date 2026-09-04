@@ -39,7 +39,7 @@ func setupTestDB() *sql.DB {
 func setupRouter(db *sql.DB) http.Handler {
 	validate := validator.New()
 
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	categoryService := service.NewCategoryService(categoryRepository, db, validate)
 	categoryController := controller.NewCategoryController(categoryService)
 
@@ -120,7 +120,7 @@ func TestUpdateCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -159,7 +159,7 @@ func TestUpdateCategoryFailed(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -196,7 +196,7 @@ func TestGetCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -260,7 +260,7 @@ func TestDeleteCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
@@ -322,7 +322,7 @@ func TestGetListCategorySuccess(t *testing.T) {
 
 	// create category first
 	tx, _ := db.Begin()
-	categoryRepository := repository.NewCategoryRepository()
+	categoryRepository := repository.NewCategoryRepositoryImpl()
 	category1 := categoryRepository.Save(context.Background(), tx, domain.Category{
 		Name: "Gadget",
 	})
